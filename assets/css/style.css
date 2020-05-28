@@ -1,0 +1,103 @@
+body{
+  background-color: #eee;
+}
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 50px;
+  transition: 0.2s;
+  border-right: 1px solid white;
+}
+.logo{
+  color:white;
+  text-decoration:none!important;
+}
+.logo h1{
+  padding-bottom:30px;
+}
+.logo:hover{
+  color:white;
+}
+.item-menu {
+  padding: 12px 12px 12px 32px;
+  margin-top:5px;
+  text-decoration: none!important;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+}
+.item-menu:hover{
+  color: #0a6cd6;
+  border-bottom:1px solid #0a6cd6; 
+}
+.menu{
+  border-bottom: 2px solid #fff;
+}
+
+.openbtn {
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  transition: margin-left 0.2s;
+}
+.openbtn:hover {
+  color: #0a6cd6;
+  background: #343a40;
+}
+#main, .retractable{
+  transition: margin-left 0.2s;
+  padding: 20px;
+ }
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+.title-menu{
+  border-bottom: 7px solid #0a6cd6;
+}
+.btn-add:hover{
+  color:#0a6cd6!important; 
+
+}
+.form-number{
+  width:70px!important;
+}
+.form-add, select{
+  height: 50px!important;
+  font-size:18px!important;
+}
+.form-add:focus, select:focus {
+  box-shadow: 0 0 0 0!important;
+  border: 1px solid #0a6cd6!important;
+  outline: 0!important;
+} 
+.input-group-text{
+  border: 1px solid #0a6cd6;
+  background-color: #0a6cd6;
+}
+.btn-modal{
+  height: 50px!important;
+}
+.btn-modal:hover{
+  color:#0a6cd6;
+}
+.submenu-title {
+  border-bottom:5px solid #63a2e6;
+}
+select{
+  height:50px!important;
+}
+
+
+
+
+
+
+
