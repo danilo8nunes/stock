@@ -1,34 +1,11 @@
 <?php 
-require "class.php";
-require "get.stock.php";
-
+require "../class/appetizer.php";
+// require "../management/services_stock/get.stock.php";
+require "../layout/header.php";
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shribk-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-    <title>Stok | Estoque</title>
-</head>
-<body>
-	<div id="mySidebar" class="sidebar bg-dark">
-  		<a href="index.php" class="logo"><h1 class="ml-3">Stock</h1></a>
-  		<a href="index.php" class="item-menu"><img src="image/home.png" width="33"> Home</a>
-  		<a href="products.php" class="item-menu"><img src="image/prod.png" width="35"> Produtos</a>
-  		<a href="stock.php" class="item-menu"><img src="image/stok.png" width="35"> Estoque</a>
-  		<a href="#" class="item-menu"><img src="image/pg.png" width="35"> Pagamentos</a>
-  		<a href="https://google.com" class="item-menu"><img src="image/out.png" width="35"> Sair</a>
-	</div>
-	
-	<div id="main" class="bg-dark menu retractable">
-  		<button class="openbtn btn-dark" onclick="">&#9776;</button>
-  	</div>
   	
-  	<div class="bg-dark text-white retractable title-menu"><img src="image/stok.png" class="float-left" width="45">
+  	<div class="bg-dark text-white retractable title-menu">
+  		<img src="../image/stok.png" class="float-left" width="45">
   		<h3 class="ml-5"> Estoque</h3>
   	</div>
 
@@ -36,10 +13,9 @@ require "get.stock.php";
 		<div class="container-fluid bg-dark text-white mb-5 submenu-title">
 		  <h5 class="p-2">Entrada de Mercadorias</h5>
 		</div>
-
   		<div class="container-fluid ">
- 			
-  			<a class="btn btn-dark btn-add" data-toggle="modal" href="#modalAdd"><img src="image/mais.png" width="25" class="mr-2">
+  			<a class="btn btn-dark btn-add" data-toggle="modal" href="#modalAdd">
+  				<img src="../image/mais.png" width="25" class="mr-2">
   				<span><strong>Nova Entrada</strong></span>
   			</a>
   			<div class="modal fade mt-5" id="modalAdd" >
@@ -55,7 +31,9 @@ require "get.stock.php";
 									<h6 class="ml-2">Produto:</h6>  
 									<div class="input-group">
 	                 	          		<div class="input-group-prepend">
-							                <span class="input-group-text text-white"><img src="image/box2.png" width="35"></span></span>
+							                <span class="input-group-text text-white">
+							                	<img src="../image/box2.png" width="35">
+							                </span>
 							    		</div>
 										<select class="form-control" name="product">
 											<?php
@@ -73,21 +51,27 @@ require "get.stock.php";
 									<h6 class="ml-2 mt-3">Preço de compra:</h6>
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
-							                <span class="input-group-text text-white"><img src="image/real.png" width="35"></span></span>
+							                <span class="input-group-text text-white">
+							                	<img src="../image/real.png" width="35">
+							                </span>
 							    		</div>
 									    <input type="text" class="form-control form-add" autocomplete="off" name="saleprice" placeholder="Valor de Compra">
 									</div>
 									<h6 class="ml-2 mt-3">Quantidade:</h6>
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
-							                <span class="input-group-text text-white"><img src="image/amount.png" width="35"></span></span>
+							                <span class="input-group-text text-white">
+							                	<img src="../image/amount.png" width="35">
+							                </span>
 							    		</div>
 									    <input type="number" class="form-control form-add" autocomplete="off" name="amount" placeholder="Valor de Revenda" value="0">
 									</div>
 									<h6 class="ml-2 mt-3">Data:</h6>
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
-							                <span class="input-group-text text-white"><img src="image/date.png" width="35"></span></span>
+							                <span class="input-group-text text-white">
+							                	<img src="../image/date.png" width="35">
+							                </span>
 							    		</div>
 									    <input type="text" class="form-control form-add" autocomplete="off" name="date" value="<?php echo date('d/m/Y'); ?>">
 		                    		</div>
@@ -111,7 +95,9 @@ require "get.stock.php";
 						<form method="GET" class="form-inline">
 							<span>Pesquisar:</span>
 							<input type="text" name="search" class="form-control ml-2 mr-2">
-  							<button type="submit" class="btn btn-dark"><img src="image/search2.png" width="17"></button>
+  							<button type="submit" class="btn btn-dark">
+  								<img src="../image/search2.png" width="17">
+  							</button>
 						</form>
 					</div>
 				</div>
@@ -157,8 +143,4 @@ require "get.stock.php";
 		  <h5 class="p-2">Saída de Mercadorias</h5>
 		</div>
 	</div>
-    <script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="assets/js/sidebar.js"></script>
-</body>
-</html>
+<?php require "../layout/footer.php"; ?>
