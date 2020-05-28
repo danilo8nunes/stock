@@ -1,0 +1,2 @@
+# stock
+Gerenciador de estoques
