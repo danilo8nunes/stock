@@ -16,44 +16,46 @@
 CREATE DATABASE IF NOT EXISTS `stock` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `stock`;
 
--- Copiando estrutura para tabela stock.appetizer
-CREATE TABLE IF NOT EXISTS `appetizer` (
+-- Copiando estrutura para tabela stock.entries
+CREATE TABLE IF NOT EXISTS `entries` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_prod` int(11) unsigned NOT NULL,
-  `price_p` decimal(10,2) NOT NULL,
-  `amount` int(11) NOT NULL DEFAULT 0,
+  `purchase_price` decimal(10,2) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 0,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_appetizer_products` (`id_prod`),
   CONSTRAINT `FK_appetizer_products` FOREIGN KEY (`id_prod`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela stock.appetizer: ~3 rows (aproximadamente)
-/*!40000 ALTER TABLE `appetizer` DISABLE KEYS */;
-INSERT INTO `appetizer` (`id`, `id_prod`, `price_p`, `amount`, `date`) VALUES
-	(1, 29, 800.25, 10, '2020-05-27'),
-	(2, 29, 756.56, 20, '2020-05-27'),
-	(3, 30, 500.00, 5, '2020-05-27');
-/*!40000 ALTER TABLE `appetizer` ENABLE KEYS */;
+-- Copiando dados para a tabela stock.entries: ~3 rows (aproximadamente)
+/*!40000 ALTER TABLE `entries` DISABLE KEYS */;
+INSERT INTO `entries` (`id`, `id_prod`, `purchase_price`, `quantity`, `date`) VALUES
+	(8, 38, 4000.00, 2, '2020-05-29'),
+	(9, 29, 899.00, 3, '2020-05-29'),
+	(10, 38, 3850.00, 10, '2020-05-29'),
+	(11, 31, 4000.00, 5, '2020-05-28');
+/*!40000 ALTER TABLE `entries` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela stock.products
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(110) NOT NULL,
-  `amount` int(11) DEFAULT 0,
+  `quantity` int(11) DEFAULT 0,
   `sale_price` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `purchase_price` decimal(10,2) DEFAULT 0.00,
   UNIQUE KEY `name` (`name`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela stock.products: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` (`id`, `name`, `amount`, `sale_price`, `purchase_price`) VALUES
-	(31, 'Galaxy S10', 0, 5000.00, 0.00),
-	(33, 'Iphone X', 0, 8000.00, 0.00),
-	(30, 'Moto G6', 0, 849.00, 0.00),
-	(29, 'Moto G8 Plus', 0, 1200.00, 0.00);
+INSERT INTO `products` (`id`, `name`, `quantity`, `sale_price`) VALUES
+	(31, 'Galaxy S10', 5, 5000.00),
+	(38, 'Ipad X', 12, 5000.00),
+	(37, 'Iphone 6', 0, 1600.00),
+	(36, 'Iphone 8', 0, 3500.00),
+	(30, 'Moto G6', 0, 849.00),
+	(29, 'Moto G8 Plus', 3, 1200.00);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

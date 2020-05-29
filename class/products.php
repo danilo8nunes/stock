@@ -1,7 +1,7 @@
 <?php
-require "mysql.php";
+require "connection.php";
 
-class Products extends Mysql{
+class Products extends Connection{
 	
 	public function addProducts($name, $price)
 	{
@@ -49,18 +49,46 @@ class Products extends Mysql{
 	}
 	public function delProducts($id)
 	{
-		$query = "DELETE FROM products WHERE id = :id";
+		if ($this->checkEntries($id) == false){
+			$query = "DELETE FROM products WHERE id = :id";
+			$sql = $this->pdo->prepare($query);
+			$sql->bindValue(':id', $id);
+			$sql->execute();
+		
+			if ($sql->errorCode() != "00000") {
+				return false;
+		 
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+	private function checkEntries($id)
+	{
+		$query = "SELECT * FROM entries WHERE id_prod = :id";
 		$sql = $this->pdo->prepare($query);
-		$sql->bindValue(':id', $id);
+		$sql->bindValue(':id_prod', $id);
 		$sql->execute();
 		
 		if ($sql->errorCode() != "00000") {
-			return false;
-		 
+			//checkEntries falhou
+		
 		} else {
-			return true;
+			if ($sql->rowCount() > 0){
+				return true;
+			
+			} else {
+				return false;
+			}
 		}
 	}
+
+
+
+
+
 	private function checkProducts($name)
 	{
 		$query = "SELECT * FROM products WHERE name = :name";

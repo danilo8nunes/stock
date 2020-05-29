@@ -2,16 +2,18 @@
 require "../class/products.php";
 require "../management/services_products/getProducts.php";
 require "../management/services_products/addProducts.php";
+$title = "Produtos";
+
 require "../layout/header.php";
 ?>
 
-  	<div class="bg-dark text-white retractable title-menu"><img src="../image/prod.png" class="float-left" width="45">
+  	<div class="bg-dark text-white retractable title-menu"><img src="../assets/image/prod.png" class="float-left" width="45">
   		<h3 class="ml-5"> Produtos</h3>
   	</div>
   	<div class="retractable body-menu ">
 	  	<div class="container-fluid ">
-			<?php echo $addAlert; ?>
-			<a class="btn btn-dark btn-add" data-toggle="modal" href="#modalAdd"><img src="../image/mais.png" width="25" class="mr-2">
+			<?php echo $addAlert;?>
+			<a class="btn btn-dark btn-add" data-toggle="modal" href="#modalAdd"><img src="../assets/image/mais.png" width="25" class="mr-2">
   				<span><strong>Inserir Produto</strong></span>
   			</a>
   			<div class="modal fade mt-5" id="modalAdd" >
@@ -27,14 +29,14 @@ require "../layout/header.php";
 	              					<h6 class="ml-2">Produto:</h6>
 		    	      				<div class="input-group">
 	               	          			<div class="input-group-prepend">
-						                	<span class="input-group-text"><img src="../image/identify.png" width="35"></span>
+						                	<span class="input-group-text"><img src="../assets/image/identify.png" width="35"></span>
 						    			</div>
 						    		    <input type="text" class="form-control form-add" autocomplete="off" name="name" placeholder="Identificação do Produto">
 		                       		</div>
 		                      		<h6 class="ml-2 mt-3">Preço de venda:</h6>
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
-							                <span class="input-group-text text-white"><img src="../image/real.png" width="35"></span></span>
+							                <span class="input-group-text text-white"><img src="../assets/image/real.png" width="35"></span></span>
 							    		</div>
 									    <input type="text" class="form-control form-add" autocomplete="off" name="price" placeholder="Valor de Revenda">
 		                    		</div>
@@ -58,7 +60,7 @@ require "../layout/header.php";
 						<form method="GET" class="form-inline">
 							<span>Pesquisar:</span>
 							<input type="text" name="search" class="form-control ml-2 mr-2">
-  							<button type="submit" class="btn btn-dark"><img src="../image/search2.png" width="17"></button>
+  							<button type="submit" class="btn btn-dark"><img src="../assets/image/search2.png" width="17"></button>
 						</form>
 					</div>
 				</div>
@@ -86,14 +88,14 @@ require "../layout/header.php";
 									echo "<tr>";
 									echo "<td>".$value['id']."</td>";
 									echo "<td>".$value['name']."</td>";
-									echo "<td>".$value['amount']."</td>";
+									echo "<td>".$value['quantity']."</td>";
 									echo "<td>".$value['sale_price']."</td>";
 									echo "<td>
 											<a href='#'>
-												<img src='../image/edit.png' width='25' title='Editar' class='mr-2'>
+												<img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'>
 											</a>
 											<a href='../management/services_products/deleteProducts.php?id=".$value['id']."'>
-												<img src='../image/lixo.png' width='25' title='Excluir' class='mr-2'>
+												<img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'>
 											</a>
 										</td>";
 								}

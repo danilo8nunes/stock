@@ -1,11 +1,13 @@
 <?php 
-require "../class/appetizer.php";
-// require "../management/services_stock/get.stock.php";
+require "../class/entries.php";
+require "../management/services_stock/getStock.php";
+require "../management/services_stock/addStock.php";
+$title = "Estoque";
 require "../layout/header.php";
 ?>
   	
   	<div class="bg-dark text-white retractable title-menu">
-  		<img src="../image/stok.png" class="float-left" width="45">
+  		<img src="../assets/image/stok.png" class="float-left" width="45">
   		<h3 class="ml-5"> Estoque</h3>
   	</div>
 
@@ -15,7 +17,7 @@ require "../layout/header.php";
 		</div>
   		<div class="container-fluid ">
   			<a class="btn btn-dark btn-add" data-toggle="modal" href="#modalAdd">
-  				<img src="../image/mais.png" width="25" class="mr-2">
+  				<img src="../assets/image/mais.png" width="25" class="mr-2">
   				<span><strong>Nova Entrada</strong></span>
   			</a>
   			<div class="modal fade mt-5" id="modalAdd" >
@@ -32,17 +34,17 @@ require "../layout/header.php";
 									<div class="input-group">
 	                 	          		<div class="input-group-prepend">
 							                <span class="input-group-text text-white">
-							                	<img src="../image/box2.png" width="35">
+							                	<img src="../assets/image/box2.png" width="35">
 							                </span>
 							    		</div>
-										<select class="form-control" name="product">
+										<select class="form-control" name="id_prod">
 											<?php
 												if ($products == array()){			
 													echo "<option>Nem produto encontrado</option>";		
 											
 												} else {
 													foreach ($products as $key => $value) {
-														echo "<option>".$value['name']."</option>";
+														echo "<option value='".$value['id']."'>".$value['name']."</option>";
 													}
 												}
 											?>										
@@ -52,25 +54,25 @@ require "../layout/header.php";
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
 							                <span class="input-group-text text-white">
-							                	<img src="../image/real.png" width="35">
+							                	<img src="../assets/image/real.png" width="35">
 							                </span>
 							    		</div>
-									    <input type="text" class="form-control form-add" autocomplete="off" name="saleprice" placeholder="Valor de Compra">
+									    <input type="text" class="form-control form-add" autocomplete="off" name="purchase_price" placeholder="Valor de Compra">
 									</div>
 									<h6 class="ml-2 mt-3">Quantidade:</h6>
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
 							                <span class="input-group-text text-white">
-							                	<img src="../image/amount.png" width="35">
+							                	<img src="../assets/image/amount.png" width="35">
 							                </span>
 							    		</div>
-									    <input type="number" class="form-control form-add" autocomplete="off" name="amount" placeholder="Valor de Revenda" value="0">
+									    <input type="number" class="form-control form-add" autocomplete="off" name="quantity" placeholder="Quantidade" value="0">
 									</div>
 									<h6 class="ml-2 mt-3">Data:</h6>
 		                        	<div class="input-group">
 	                 	          		<div class="input-group-prepend">
 							                <span class="input-group-text text-white">
-							                	<img src="../image/date.png" width="35">
+							                	<img src="../assets/image/date.png" width="35">
 							                </span>
 							    		</div>
 									    <input type="text" class="form-control form-add" autocomplete="off" name="date" value="<?php echo date('d/m/Y'); ?>">
@@ -96,7 +98,7 @@ require "../layout/header.php";
 							<span>Pesquisar:</span>
 							<input type="text" name="search" class="form-control ml-2 mr-2">
   							<button type="submit" class="btn btn-dark">
-  								<img src="../image/search2.png" width="17">
+  								<img src="../assets/image/search2.png" width="17">
   							</button>
 						</form>
 					</div>
@@ -119,21 +121,21 @@ require "../layout/header.php";
 					</thead>
 					<tbody>
 						<?php
-//							if ($products == array()){			
+							if ($appetizer == array()){			
 								echo "<tr><td colspan='6'>Nenhuma Entrada Registrada</td></td>";					
 							
-/*							} else {
-								foreach ($products as $key => $value) {
+							} else {
+								foreach ($appetizer as $key => $value) {
 								echo "<tr>";
-								echo "<td>".$value['id']."</td>";
+								echo "<td>".$value['id_prod']."</td>";
 								echo "<td>".$value['name']."</td>";
-								echo "<td>".$value['amount']."</td>";
-								echo "<td>".$value['sale_price']."</td>";
-								echo "<td><a href='#'><img src='image/edit.png' width='25' title='Editar' class='mr-2'></a>
-								<a href='delete.php?id=".$value['id']."'><img src='image/lixo.png' width='25' title='Excluir' class='mr-2'></a></td>";
+								echo "<td>".$value['quantity']."</td>";
+								echo "<td>".$value['purchase_price']."</td>";
+								echo "<td>".$value['date']."</td>";
+								echo "<td><a href='#'><img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'></a>
+								<a href='deleteStock.php?id=".$value['id_prod']."'><img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'></a></td>";
 								}
 							}
-*/
 						?>
 					</tbody>
 				</table>

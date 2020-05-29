@@ -1,5 +1,5 @@
 <?php
-class Mysql{
+class Connection{
 
 	public $pdo;
 
