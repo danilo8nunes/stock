@@ -38,7 +38,7 @@ require "../layout/header.php";
 	                 	          		<div class="input-group-prepend">
 							                <span class="input-group-text text-white"><img src="../assets/image/real.png" width="35"></span></span>
 							    		</div>
-									    <input type="text" class="form-control form-add" autocomplete="off" name="price" placeholder="Valor de Revenda">
+									    <input type="text" class="form-control form-add mask-money" autocomplete="off" name="price" placeholder="Valor de Revenda">
 		                    		</div>
 		                    		<button class="btn btn-block btn-dark mt-4 btn-modal"><strong>Finalizar</strong></button>
 	                   			</form>

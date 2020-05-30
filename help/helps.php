@@ -7,3 +7,7 @@ function format_currency_brl($number) {
 function dateBR($date) {
 	return implode("/", array_reverse(explode("-", $date)));
 }
+
+function convert_currency_eua($price) {
+	return str_replace(['.', ','], ['', '.'], $price);
+}
