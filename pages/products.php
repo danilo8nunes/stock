@@ -2,8 +2,8 @@
 require "../class/products.php";
 require "../management/services_products/getProducts.php";
 require "../management/services_products/addProducts.php";
+require "../help/helps.php";
 $title = "Produtos";
-
 require "../layout/header.php";
 ?>
 
@@ -89,7 +89,7 @@ require "../layout/header.php";
 									echo "<td>".$value['id']."</td>";
 									echo "<td>".$value['name']."</td>";
 									echo "<td>".$value['quantity']."</td>";
-									echo "<td>".$value['sale_price']."</td>";
+									echo "<td>".format($value['sale_price'])."</td>";
 									echo "<td>
 											<a href='#'>
 												<img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'>

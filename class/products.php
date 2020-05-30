@@ -84,11 +84,6 @@ class Products extends Connection{
 			}
 		}
 	}
-
-
-
-
-
 	private function checkProducts($name)
 	{
 		$query = "SELECT * FROM products WHERE name = :name";

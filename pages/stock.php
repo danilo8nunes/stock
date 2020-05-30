@@ -2,6 +2,7 @@
 require "../class/entries.php";
 require "../management/services_stock/getStock.php";
 require "../management/services_stock/addStock.php";
+require "../help/helps.php";
 $title = "Estoque";
 require "../layout/header.php";
 ?>
@@ -66,7 +67,7 @@ require "../layout/header.php";
 							                	<img src="../assets/image/amount.png" width="35">
 							                </span>
 							    		</div>
-									    <input type="number" class="form-control form-add" autocomplete="off" name="quantity" placeholder="Quantidade" value="0">
+									    <input type="number" class="form-control form-add" autocomplete="off" name="quantity" placeholder="Quantidade" value="0" min="0">
 									</div>
 									<h6 class="ml-2 mt-3">Data:</h6>
 		                        	<div class="input-group">
@@ -130,10 +131,10 @@ require "../layout/header.php";
 								echo "<td>".$value['id_prod']."</td>";
 								echo "<td>".$value['name']."</td>";
 								echo "<td>".$value['quantity']."</td>";
-								echo "<td>".$value['purchase_price']."</td>";
-								echo "<td>".$value['date']."</td>";
+								echo "<td>".format($value['purchase_price'])."</td>";
+								echo "<td>".dateBR($value['date'])."</td>";
 								echo "<td><a href='#'><img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'></a>
-								<a href='deleteStock.php?id=".$value['id_prod']."'><img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'></a></td>";
+								<a href='../management/services_stock/deleteStock.php?id=".$value['id']."&id_prod=".$value['id_prod']."&quantity=".$value['quantity']."'><img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'></a></td>";
 								}
 							}
 						?>

@@ -28,13 +28,13 @@ CREATE TABLE IF NOT EXISTS `entries` (
   CONSTRAINT `FK_appetizer_products` FOREIGN KEY (`id_prod`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela stock.entries: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela stock.entries: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `entries` DISABLE KEYS */;
 INSERT INTO `entries` (`id`, `id_prod`, `purchase_price`, `quantity`, `date`) VALUES
-	(8, 38, 4000.00, 2, '2020-05-29'),
-	(9, 29, 899.00, 3, '2020-05-29'),
-	(10, 38, 3850.00, 10, '2020-05-29'),
-	(11, 31, 4000.00, 5, '2020-05-28');
+	(13, 38, 3500.00, 10, '2020-05-30'),
+	(14, 36, 1699.00, 6, '2020-05-30'),
+	(15, 29, 899.00, 6, '2020-05-27'),
+	(16, 30, 596.25, 3, '2020-05-30');
 /*!40000 ALTER TABLE `entries` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela stock.products
@@ -47,15 +47,16 @@ CREATE TABLE IF NOT EXISTS `products` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela stock.products: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela stock.products: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `name`, `quantity`, `sale_price`) VALUES
-	(31, 'Galaxy S10', 5, 5000.00),
-	(38, 'Ipad X', 12, 5000.00),
+	(40, 'Galaxy A10', 0, 5500.00),
+	(31, 'Galaxy S10', 0, 5000.00),
+	(38, 'Ipad X', 10, 5000.00),
 	(37, 'Iphone 6', 0, 1600.00),
-	(36, 'Iphone 8', 0, 3500.00),
-	(30, 'Moto G6', 0, 849.00),
-	(29, 'Moto G8 Plus', 3, 1200.00);
+	(36, 'Iphone 8', 6, 3500.00),
+	(30, 'Moto G6', 3, 849.00),
+	(29, 'Moto G8 Plus', 6, 1200.00);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
