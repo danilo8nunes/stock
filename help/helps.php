@@ -1,15 +1,9 @@
 <?php
 
-function format($number){
-	$money = "R$ ".number_format($number, 2, ',', '.');
-
-	return $money;
+function format($number) {
+	return number_format($number, 2, ',', '.');
 }
 
-function dateBR($date){
-	$dateBR = implode("/",array_reverse(explode("-",$date)));
-
-	return $dateBR;
-
-	}
-?>
+function dateBR($date) {
+	return implode("/", array_reverse(explode("-", $date)));
+}
