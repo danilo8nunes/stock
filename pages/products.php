@@ -8,7 +8,7 @@ require "../layout/header.php";
 ?>
 
   	<div class="bg-dark text-white retractable title-menu"><img src="../assets/image/prod.png" class="float-left" width="45">
-  		<h3 class="ml-5"> Produtos</h3>
+  		<h3 class="ml-5"> Produtos 2.0</h3>
   	</div>
   	<div class="retractable body-menu ">
 	  	<div class="container-fluid ">
