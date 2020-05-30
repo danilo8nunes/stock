@@ -121,6 +121,16 @@ require "../layout/header.php";
 						</tr>
 					</thead>
 					<tbody>
+						<!-- <?php if (!empty($appetizer)): ?>
+						<?php foreach($appetizer as $tete): ?>
+								<tr>
+									<td></td>
+								</tr>
+							<?php endforeach; ?>
+						<?php else: ?>
+							<p></p>
+						<?php endif; ?> -->
+
 						<?php
 							if ($appetizer == array()){			
 								echo "<tr><td colspan='6'>Nenhuma Entrada Registrada</td></td>";					
@@ -131,7 +141,7 @@ require "../layout/header.php";
 								echo "<td>".$value['id_prod']."</td>";
 								echo "<td>".$value['name']."</td>";
 								echo "<td>".$value['quantity']."</td>";
-								echo "<td>".format($value['purchase_price'])."</td>";
+								echo "<td>".format_currency_brl($value['purchase_price'])."</td>";
 								echo "<td>".dateBR($value['date'])."</td>";
 								echo "<td><a href='#'><img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'></a>
 								<a href='../management/services_stock/deleteStock.php?id=".$value['id']."&id_prod=".$value['id_prod']."&quantity=".$value['quantity']."'><img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'></a></td>";

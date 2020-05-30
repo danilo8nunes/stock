@@ -89,14 +89,10 @@ require "../layout/header.php";
 									echo "<td>".$value['id']."</td>";
 									echo "<td>".$value['name']."</td>";
 									echo "<td>".$value['quantity']."</td>";
-									echo "<td>".format($value['sale_price'])."</td>";
+									echo "<td>".format_currency_brl($value['sale_price'])."</td>";
 									echo "<td>
-											<a href='#'>
-												<img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'>
-											</a>
-											<a href='../management/services_products/deleteProducts.php?id=".$value['id']."'>
-												<img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'>
-											</a>
+											<a href='#'><img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'></a>
+											<a href='../management/services_products/deleteProducts.php?id=".$value['id']."'><img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'></a>
 										</td>";
 								}
 							}

@@ -1,6 +1,6 @@
 <?php
 
-function format($number) {
+function format_currency_brl($number) {
 	return number_format($number, 2, ',', '.');
 }
 
