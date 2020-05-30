@@ -1,5 +1,5 @@
 <?php
-require "products.php";
+include_once "connection.php";
 
 class Entries extends Connection 
 {

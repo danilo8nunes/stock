@@ -1,9 +1,11 @@
 <?php 
+
+$title = "Estoque";
+
 require "../class/entries.php";
 require "../management/services_stock/getStock.php";
 require "../management/services_stock/addStock.php";
 require "../help/helps.php";
-$title = "Estoque";
 require "../layout/header.php";
 ?>
   	

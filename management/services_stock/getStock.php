@@ -1,4 +1,5 @@
 <?php 
+require "../class/products.php";
 $products = new Products();
 $products = $products->getProducts();
 
