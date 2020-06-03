@@ -13,4 +13,3 @@ if (!empty($_GET['search'])){
 } else {
 	$appetizer = $appetizer->getEntries();	
 }
-?>

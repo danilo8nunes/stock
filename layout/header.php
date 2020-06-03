@@ -14,7 +14,7 @@
   		<a href="../index.php" class="item-menu"><img src="../assets/image/home.png" width="33"> Home</a>
   		<a href="products.php" class="item-menu"><img src="../assets/image/prod.png" width="35"> Produtos</a>
   		<a href="stock.php" class="item-menu"><img src="../assets/image/stok.png" width="35"> Estoque</a>
-  		<a href="#" class="item-menu"><img src="../assets/image/pg.png" width="35"> Pagamentos</a>
+  		<a href="payments.php" class="item-menu"><img src="../assets/image/pg.png" width="35"> Pagamentos</a>
   		<a href="https://google.com" class="item-menu"><img src="../assets/image/out.png" width="35"> Sair</a>
 	</div>
 	<div id="main" class="bg-dark menu retractable">

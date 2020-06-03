@@ -1,8 +1,15 @@
 <?php
-include_once "connection.php";
+include_once "Connection.php";
 
 class Products extends Connection{
-	
+		
+	/**
+	 * Adiciona um novo produto
+	 *
+	 * @param  string $name
+	 * @param  float $price (preço de revenda)
+	 * @return bool
+	 */
 	public function addProducts($name, $price)
 	{
 		if ($this->checkProducts($name) == false){
@@ -21,14 +28,20 @@ class Products extends Connection{
 		} else {
 			return false;
 		}
-	}
-	public function getProducts($search = "")
+	}	
+	
+	/**
+	 * Consulta produtos cadastrados
+	 *
+	 * @param  string $search (null = pesquisa todos os produtos)
+	 * @return array
+	 */
+	public function getProducts($search = null)
 	{
-		if ($search == ""){
-			$query = "SELECT * FROM products ORDER BY id";
-		
-		} else {
+		if ($search){
 			$query = "SELECT * FROM products WHERE name LIKE :search ORDER BY id";
+		} else {
+			$query = "SELECT * FROM products ORDER BY id";			
 		}
 
 		$sql = $this->pdo->prepare($query);
@@ -47,6 +60,13 @@ class Products extends Connection{
 			}
 		}
 	}
+	
+	/**
+	 * Deleta Produto caso não haja entrada para o produto
+	 *
+	 * @param  int $id
+	 * @return bool
+	 */
 	public function delProducts($id)
 	{
 		if ($this->checkEntries($id) == false){
@@ -65,6 +85,13 @@ class Products extends Connection{
 			return false;
 		}
 	}
+	
+	/**
+	 * Verifica se há entrada(s) para o produto
+	 *
+	 * @param  mixed $id
+	 * @return bool
+	 */
 	private function checkEntries($id)
 	{
 		$query = "SELECT * FROM entries WHERE id_prod = :id";
@@ -83,7 +110,13 @@ class Products extends Connection{
 				return false;
 			}
 		}
-	}
+	}	
+	/**
+	 * Verifica se o produto já está cadastrado
+	 *
+	 * @param  mixed $name
+	 * @return bool
+	 */
 	private function checkProducts($name)
 	{
 		$query = "SELECT * FROM products WHERE name = :name";
@@ -92,7 +125,7 @@ class Products extends Connection{
 		$sql->execute();
 		
 		if ($sql->errorCode() != "00000") {
-			//checkProducts falhou
+			exit;
 		
 		} else {
 			if ($sql->rowCount() > 0){
@@ -105,4 +138,3 @@ class Products extends Connection{
 	}
 
 }
-?>

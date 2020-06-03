@@ -1,18 +1,23 @@
 <?php
 require "../../class/products.php";
 
-$deleteAlert = "";
+session_start();
 
 if (!empty($_GET['id'])) {
 	$product = new Products();
 	$product = $product->delProducts($_GET['id']);
 
-	if ($product == false ){
-		$deleteAlert = "<div class='alert alert-danger alert-dismissible'>
-							<button type='button' class='close' data-dismiss='alert'>&times;</button>
-							<strong>Erro!</strong> Produto informado possui entrada(s) em estoque. 
-						</div>";
+	if ($product == true){
+		$_SESSION['alert'] = "<div class='alert alert-success alert-dismissible'>
+		 						<button type='button' class='close' data-dismiss='alert'>&times;</button>
+		 						<img src='../assets/image/ok.png' width='18'> Produto excluido com sucesso
+		 					</div>";
+	} else {
+		$_SESSION['alert'] = "<div class='alert alert-danger alert-dismissible'>
+		 						<button type='button' class='close' data-dismiss='alert'>&times;</button>
+		 						<img src='../assets/image/x.png' width='18'> Produto informado possui entradas em estoque. 
+		 	 				</div>";
 	}
+	header("location: ../../pages/products.php");
 }
-    header("location: ../../pages/products.php");
-?>
+    

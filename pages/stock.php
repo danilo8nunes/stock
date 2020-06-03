@@ -3,9 +3,9 @@
 $title = "Estoque";
 
 require "../class/entries.php";
+require "../help/helps.php";
 require "../management/services_stock/getStock.php";
 require "../management/services_stock/addStock.php";
-require "../help/helps.php";
 require "../layout/header.php";
 ?>
   	
@@ -60,7 +60,7 @@ require "../layout/header.php";
 							                	<img src="../assets/image/real.png" width="35">
 							                </span>
 							    		</div>
-									    <input type="text" class="form-control form-add" autocomplete="off" name="purchase_price" placeholder="Valor de Compra">
+									    <input type="text" class="form-control form-add mask-money" autocomplete="off" name="purchase_price" placeholder="Valor de Compra">
 									</div>
 									<h6 class="ml-2 mt-3">Quantidade:</h6>
 		                        	<div class="input-group">
@@ -78,7 +78,7 @@ require "../layout/header.php";
 							                	<img src="../assets/image/date.png" width="35">
 							                </span>
 							    		</div>
-									    <input type="text" class="form-control form-add" autocomplete="off" name="date" value="<?php echo date('d/m/Y'); ?>">
+									    <input type="text" class="form-control form-add mask-date" autocomplete="off" name="date" value="<?php echo date('d/m/Y'); ?>">
 		                    		</div>
 		                    		<button class="btn btn-block btn-dark mt-4 btn-modal"><strong>Cadastrar</strong></button>
 	                   			</form>
@@ -123,36 +123,48 @@ require "../layout/header.php";
 						</tr>
 					</thead>
 					<tbody>
-						<!-- <?php if (!empty($appetizer)): ?>
-						<?php foreach($appetizer as $tete): ?>
+						<?php if (!empty($appetizer)): ?>
+							<?php foreach($appetizer as $value): ?>
 								<tr>
-									<td></td>
+									<td> <?= $value['id_prod']; ?> </td>
+									<td> <?= $value['name']; ?> </td>
+									<td> <?= $value['quantity']; ?> </td>
+									<td> <?= format_currency_brl($value['purchase_price']); ?> </td>
+									<td> <?= format_currency_date_br($value['date']); ?> </td>
+									<td>
+										<a href='#'>
+											<img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'>
+										</a>
+										<a href="#" data-href="../management/services_stock/deleteStock.php?id=<?=$value['id'];?>&id_prod=<?=$value['id_prod'];?>&quantity=<?=$value['quantity'];?>" data-toggle="modal" data-target="#confirm-delete">
+											<img src="../assets/image/lixo.png" width="25" title="Excluir" class="mr-2">
+										</a>
+									</td>
 								</tr>
 							<?php endforeach; ?>
-						<?php else: ?>
-							<p></p>
-						<?php endif; ?> -->
-
-						<?php
-							if ($appetizer == array()){			
-								echo "<tr><td colspan='6'>Nenhuma Entrada Registrada</td></td>";					
-							
-							} else {
-								foreach ($appetizer as $key => $value) {
-								echo "<tr>";
-								echo "<td>".$value['id_prod']."</td>";
-								echo "<td>".$value['name']."</td>";
-								echo "<td>".$value['quantity']."</td>";
-								echo "<td>".format_currency_brl($value['purchase_price'])."</td>";
-								echo "<td>".dateBR($value['date'])."</td>";
-								echo "<td><a href='#'><img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'></a>
-								<a href='../management/services_stock/deleteStock.php?id=".$value['id']."&id_prod=".$value['id_prod']."&quantity=".$value['quantity']."'><img src='../assets/image/lixo.png' width='25' title='Excluir' class='mr-2'></a></td>";
-								}
-							}
-						?>
+							<?php else: ?>
+								<tr>
+									<td colspan='6'>Nenhuma Entrada Registrada</td>
+								</tr>
+						<?php endif; ?>
 					</tbody>
 				</table>
 			</div>
+		</div>
+		<div class="modal fade mt-5" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+ 		           	<div class="modal-header bg-primary text-white">
+						<h5>Excluir Entrada</h5>
+            		</div>
+            		<div class="modal-body">
+            	    	Deseja realmente excluir a entrada selecionada?
+  	    			</div>
+    	        	<div class="modal-footer">
+                		<button type="button" class="btn btn-outline-primary" data-dismiss="modal"><strong>Cancelar</strong></button>
+                		<a class="btn btn-danger btn-ok"><strong> Excluir </strong></a>
+      		      	</div>
+      		  	</div>
+   			</div>
 		</div>
 		<div class="container-fluid bg-dark text-white mt-5 submenu-title">
 		  <h5 class="p-2">Saída de Mercadorias</h5>

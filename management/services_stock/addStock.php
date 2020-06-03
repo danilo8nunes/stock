@@ -4,9 +4,9 @@ $addAlert = "";
 
 if (!empty($_POST['id_prod']) && $_POST['quantity'] > 0 && !empty($_POST['purchase_price']) && !empty($_POST['purchase_price'])){
 
-	$date = $_POST['date'];
-	$date = implode("-",array_reverse(explode("/",$date)));
-
+	$date = format_currency_date_int($_POST['date']);
+	
+	echo $date;
 	$entries = new Entries(); 
 	$newEntries = $entries->addEntries($_POST['id_prod'], $_POST['purchase_price'], $_POST['quantity'], $date);
 	

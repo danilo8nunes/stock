@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Faz conecção com o banco de dados
+ */
 class Connection
 {
 	protected $pdo;
