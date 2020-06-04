@@ -2,10 +2,9 @@
 $title = "Produtos";
 session_start();
 require "../class/products.php";
+require "../help/helps.php";
 require "../management/services_products/getProducts.php";
 require "../management/services_products/addProducts.php";
-require "../help/helps.php";
-
 require "../layout/header.php";
 ?>
 
@@ -93,7 +92,7 @@ require "../layout/header.php";
 									<td><?= $value['id'];?></td>
 									<td><?= $value['name'];?></td>
 									<td><?= $value['quantity'];?></td>
-									<td><?= format_currency_brl($value['sale_price']);?></td>
+									<td>R$ <?= format_currency_brl($value['sale_price']);?></td>
 									<td>
 										<a href='#'>
 											<img src="../assets/image/edit.png" width="25" title="Editar" class="mr-2">

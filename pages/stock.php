@@ -129,7 +129,7 @@ require "../layout/header.php";
 									<td> <?= $value['id_prod']; ?> </td>
 									<td> <?= $value['name']; ?> </td>
 									<td> <?= $value['quantity']; ?> </td>
-									<td> <?= format_currency_brl($value['purchase_price']); ?> </td>
+									<td>R$ <?= format_currency_brl($value['purchase_price']); ?> </td>
 									<td> <?= format_currency_date_br($value['date']); ?> </td>
 									<td>
 										<a href='#'>
