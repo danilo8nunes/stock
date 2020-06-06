@@ -11,7 +11,7 @@ if(!empty($_GET['id_prod'])) {
 
 if(!empty($_SESSION['shop'])) {
     $id = implode(",", $_SESSION['shop']); 
-   
+
     $shop = new Payments();
-    $shop = $shop->getShop($id);
+    $shop = $shop->addCart($id);
 }

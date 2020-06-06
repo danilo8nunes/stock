@@ -3,6 +3,7 @@
 $title = "Estoque";
 
 require "../class/entries.php";
+require "../class/exits.php";
 require "../help/helps.php";
 require "../management/services_stock/getStock.php";
 require "../management/services_stock/addStock.php";
@@ -132,9 +133,6 @@ require "../layout/header.php";
 									<td>R$ <?= format_currency_brl($value['purchase_price']); ?> </td>
 									<td> <?= format_currency_date_br($value['date']); ?> </td>
 									<td>
-										<a href='#'>
-											<img src='../assets/image/edit.png' width='25' title='Editar' class='mr-2'>
-										</a>
 										<a href="#" data-href="../management/services_stock/deleteStock.php?id=<?=$value['id'];?>&id_prod=<?=$value['id_prod'];?>&quantity=<?=$value['quantity'];?>" data-toggle="modal" data-target="#confirm-delete">
 											<img src="../assets/image/lixo.png" width="25" title="Excluir" class="mr-2">
 										</a>
@@ -166,8 +164,52 @@ require "../layout/header.php";
       		  	</div>
    			</div>
 		</div>
-		<div class="container-fluid bg-dark text-white mt-5 submenu-title">
+		<div class="container-fluid bg-dark text-white mt-5 submenu-title2">
 		  <h5 class="p-2">Saída de Mercadorias</h5>
 		</div>
+		<div class="container-fluid mt-4">
+		<div class="table-resposive">  
+				<table class="table table-striped table-hover text-center">
+					<thead class="thead-dark">
+						<tr>
+							<th>#</th>
+							<th>Produto</th>
+							<th>Quatidade</th>
+							<th>Preço de venda</th>
+							<th>Data</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php if (!empty($exits)): ?>
+							<?php foreach($exits as $value): ?>
+								<tr>
+									<td> <?= $value['id_prod']; ?> </td>
+									<td> <?= $value['name']; ?> </td>
+									<td> <?= $value['quantity']; ?> </td>
+									<td>R$ <?= format_currency_brl($value['sale_price']); ?> </td>
+									<td> <?= format_currency_date_br($value['date']); ?> </td>
+								</tr>
+							<?php endforeach; ?>
+							<?php else: ?>
+								<tr>
+									<td colspan='5'>Nenhuma Saída Registrada</td>
+								</tr>
+						<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
+							</div>
+
+
+
+
+
+
+
+
+
+
+
+
 	</div>
 <?php require "../layout/footer.php"; ?>

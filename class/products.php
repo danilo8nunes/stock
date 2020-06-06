@@ -136,5 +136,4 @@ class Products extends Connection{
 			}
 		}
 	}
-
 }

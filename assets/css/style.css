@@ -91,10 +91,38 @@ body{
 .submenu-title {
   border-bottom:5px solid #63a2e6;
 }
+.submenu-title2 {
+  border-bottom:5px solid greenyellow;
+}
 select{
   height:50px!important;
 }
 #addShop{
   width:300px!important;
-  height:40px!important;
+  height:39px!important;
+}
+.more, .less{
+  font-size: 22px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin-top: -5px;
+  line-height:5px;
+}
+.inputquantity {
+  min-width: 129px; 
+}
+
+
+.quantity {
+  width: 60px;
+  height: 30px;
+  padding-left:15px!important;
+  border: 1px solid greenyellow;
+  background-color:none!important;
+}
+.quantity:focus {
+  box-shadow: 0 0 0 0!important;
+  border: 1px solid greenyellow;
+  outline: 0!important;
 }

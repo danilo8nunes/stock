@@ -103,12 +103,12 @@ class Entries extends Connection
 	 * @param  bool $inject (true = incremento, false = decremento)
 	 * @return bool
 	 */
-	private function updateQuantity($id_prod, $quantity, $inject)
+	protected function updateQuantity($id_prod, $quantity, $inject)
 	{
 		if ($inject == true) {
 			$query = "UPDATE products SET quantity = quantity + :quantity WHERE id = :id_prod";	
 		} else {
-			$query = "UPDATE products SET quantity = quantity + :quantity WHERE id = :id_prod";	
+			$query = "UPDATE products SET quantity = quantity - :quantity WHERE id = :id_prod";	
 		}
 
 		$sql = $this->pdo->prepare($query);
